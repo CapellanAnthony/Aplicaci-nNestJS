@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: balancer
+spec:
+  replicas: 3  # Tres instancias de la aplicación
+  selector:
+    matchLabels:
+      app: balancer
+  template:
+    metadata:
+      labels:
+        app: balancer
+    spec:
+      containers:
+        - name: balancer
+          image: balancer
+          ports:
+            - containerPort: 3000
